@@ -3,105 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعلم الهكر الأخلاقي والترمكس</title>
+    <title>أكاديمية الهكر الأخلاقي والأمن السيبراني</title>
+    <!-- استدعاء مكتبة Tailwind CSS للتصميم الاحترافي -->
+    <script src="https://jsdelivr.net"></script>
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        :root { --bg: #ffffff; --text: #1a1a1a; --card: #f0f0f0; --primary: #00ff66; --btn-bg: #222; --btn-text: #fff; }
-        [data-theme="dark"] { --bg: #0d0d0d; --text: #ffffff; --card: #1a1a1a; --primary: #00ff66; --btn-bg: #fff; --btn-text: #000; }
-        body { background-color: var(--bg); color: var(--text); font-family: Arial, sans-serif; transition: 0.3s; margin: 0; padding: 20px; text-align: center; }
-        header { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto 30px; }
-        .theme-btn { padding: 10px 20px; cursor: pointer; border: none; background: var(--btn-bg); color: var(--btn-text); font-weight: bold; border-radius: 5px; }
-        .balance { font-size: 1.2rem; font-weight: bold; color: var(--primary); border: 2px dashed var(--primary); padding: 5px 15px; border-radius: 5px; }
-        .container { max-width: 800px; margin: 0 auto; display: grid; gap: 20px; }
-        .card { background: var(--card); border: 1px solid #333; padding: 20px; border-radius: 8px; text-align: right; position: relative; }
-        .card h3 { margin-top: 0; color: var(--primary); }
-        .code-box { background: #000; color: #00ff66; padding: 10px; font-family: monospace; border-radius: 4px; direction: ltr; text-align: left; overflow-x: auto; }
-        .quiz-zone { margin-top: 15px; display: flex; gap: 10px; align-items: center; }
-        input [type="text"] { padding: 8px; border: 1px solid #444; border-radius: 4px; background: var(--bg); color: var(--text); flex: 1; }
-        .action-btn { padding: 8px 15px; border: none; background: var(--primary); color: #000; font-weight: bold; cursor: pointer; border-radius: 4px; }
-        .action-btn:disabled { background: #555; cursor: not-allowed; color: #aaa; }
+        body { font-family: 'Tajawal', sans-serif; background-color: #0f172a; color: #f8fafc; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>أكاديمية السايبر والترمكس 🛡️</h1>
-        <div>
-            <span class="balance">رصيدك: <span id="money">0</span>$</span>
-            <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">الوضع الليلي 🌙</button>
+    <!-- شريط التنقل (Navbar) -->
+    <nav class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-emerald-400">🛡️ CyberAcademy</h1>
+            <div class="space-x-4 space-x-reverse">
+                <a href="#courses" class="hover:text-emerald-400 transition">الدورات</a>
+                <a href="#exams" class="hover:text-emerald-400 transition">الاختبارات</a>
+                <button class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg transition">تسجيل دخول</button>
+            </div>
         </div>
+    </nav>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <header class="container mx-auto text-center py-20 px-4">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white">احترف <span class="text-emerald-400">الهكر الأخلاقي</span> من الصفر</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto mb-8 text-lg">منصة تعليمية متكاملة تحتوي على مسارات عملية، مختبرات افتراضية، واختبارات قوية لتأهيلك لسوق العمل.</p>
+        <a href="#courses" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg px-8 py-3 rounded-xl transition shadow-lg shadow-emerald-500/20">ابدأ التعلم الآن</a>
     </header>
 
-    <div class="container">
-        <!-- الدرس الأول -->
-        <div class="card">
-            <h3>الدرس 1: تحديث حزم الترمكس (Termux)</h3>
-            <p>قبل البدء بأي عملية اختراق أخلاقي، يجب تحديث النظام داخل ترمكس لضمان عمل الأدوات بكفاءة ولتجنب الأخطاء المستمرة.</p>
-            <div class="code-box">pkg update && pkg upgrade -y</div>
-            <div class="quiz-zone">
-                <input type="text" id="ans1" placeholder="اكتب الأمر البرمجي للتحديث هنا...">
-                <button class="action-btn" id="btn1" onclick="checkAnswer(1, 'pkg update && pkg upgrade -y', 50)">تحقق واربح 50$</button>
+    <!-- قسم الدورات التعليمية (Courses Section) -->
+    <section id="courses" class="container mx-auto py-16 px-4">
+        <h3 class="text-3xl font-bold mb-10 border-r-4 border-emerald-400 pr-4">المسارات التعليمية المتاحة</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- الدورة الأولى -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition">
+                <div class="text-emerald-400 text-4xl mb-4">🌐</div>
+                <h4 class="text-xl font-bold mb-2">اختبار اختراق تطبيقات الويب (Web Pentesting)</h4>
+                <p class="text-slate-400 text-sm mb-4">تعلم ثغرات SQLi, XSS, CSRF وكيفية حماية المواقع منها.</p>
+                <div class="flex justify-between items-center text-xs text-slate-500">
+                    <span>⏱️ 24 ساعة</span>
+                    <span>🔥 للمبتدئين</span>
+                </div>
+            </div>
+
+            <!-- الدورة الثانية -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition">
+                <div class="text-emerald-400 text-4xl mb-4">💻</div>
+                <h4 class="text-xl font-bold mb-2">هندسة عكسية وتحليل البرمجيات الخبيثة</h4>
+                <p class="text-slate-400 text-sm mb-4">تفكيك الفيروسات وفهم كيفية عمل البرامج الضارة وأنظمة التشفير.</p>
+                <div class="flex justify-between items-center text-xs text-slate-500">
+                    <span>⏱️ 40 ساعة</span>
+                    <span>🚨 مستوى متقدم</span>
+                </div>
+            </div>
+
+            <!-- الدورة الثالثة -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition">
+                <div class="text-emerald-400 text-4xl mb-4">🛡️</div>
+                <h4 class="text-xl font-bold mb-2">شهادة CEH v12 العملية</h4>
+                <p class="text-slate-400 text-sm mb-4">إعداد كامل لاجتياز شهادة الهكر الأخلاقي المعتمدة عالمياً.</p>
+                <div class="flex justify-between items-center text-xs text-slate-500">
+                    <span>⏱️ 50 ساعة</span>
+                    <span>🎓 متوسط</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم الاختبارات التفاعلية (Exams/Quiz Section) -->
+    <section id="exams" class="bg-slate-900/50 border-t border-b border-slate-800 py-16 px-4">
+        <div class="container mx-auto max-w-3xl">
+            <h3 class="text-3xl font-bold mb-4 text-center">قم باختبار مهاراتك السيبرانية</h3>
+            <p class="text-slate-400 text-center mb-8">أجب على الأسئلة التالية لمعرفة مستوى جهوزيتك:</p>
+            
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-8" id="quiz-container">
+                <div id="question" class="text-xl font-bold mb-6 text-emerald-300">جاري تحميل السؤال الأول...</div>
+                <div id="options" class="space-y-4">
+                    <!-- الخيارات تظهر هنا برمجياً -->
+                </div>
+                <button id="next-btn" class="mt-6 bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 font-bold px-6 py-2 rounded-lg transition hidden">السؤال التالي ←</button>
             </div>
         </div>
+    </section>
 
-        <!-- الدرس الثاني -->
-        <div class="card">
-            <h3>الدرس 2: فحص المنافذ باستخدام Nmap</h3>
-            <p>أداة Nmap تستخدم لفحص الشبكات ومعرفة المنافذ المفتوحة (Ports) والثغرات داخل الأجهزة المستهدفة.</p>
-            <div class="code-box">nmap -sV target.com</div>
-            <div class="quiz-zone">
-                <input type="text" id="ans2" placeholder="ما هو أمر فحص الإصدارات في Nmap؟...">
-                <button class="action-btn" id="btn2" onclick="checkAnswer(2, 'nmap -sV target.com', 100)">تحقق واربح 100$</button>
-            </div>
-        </div>
+    <!-- تذييل الصفحة -->
+    <footer class="text-center py-8 text-slate-600 text-sm border-t border-slate-900">
+        جميع الحقوق محفوظة © أكاديمية الأمن السيبراني 2026
+    </footer>
 
-        <!-- الدرس الثالث -->
-        <div class="card">
-            <h3>الدرس 3: تثبيت أداة Metasploit</h3>
-            <p>مشروع ميتاسبلويت هو أشهر إطار عمل لإنشاء واختبار استغلالات الثغرات الأمنية في أنظمة التشغيل المختلفة.</p>
-            <div class="code-box">pkg install metasploit</div>
-            <div class="quiz-zone">
-                <input type="text" id="ans3" placeholder="اكتب أمر تثبيت الميتاسبلويت...">
-                <button class="action-btn" id="btn3" onclick="checkAnswer(3, 'pkg install metasploit', 150)">تحقق واربح 150$</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- سكربت التحكم في الاختبار التفاعلي -->
     <script>
-        let balance = parseInt(localStorage.getItem('cyber_balance')) || 0;
-        document.getElementById('money').innerText = balance;
-        
-        // استعادة الوضع المحفوظ (ليلي/نهاري)
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('themeBtn').innerText = "الوضع النهاري ☀️";
+        const quizData = [
+            {
+                question: "ما هو البروتوكول المسؤول عن تشفير اتصالات الويب وصناعة قفل الأمان؟",
+                options: ["HTTP", "FTP", "HTTPS", "SSH"],
+                correct: 2
+            },
+            {
+                question: "ما نوع الهجوم الذي يتم فيه إغراق الخادم بطلبات وهمية لإيقافه عن العمل؟",
+                options: ["Phishing", "DDoS Attack", "SQL Injection", "Man-in-the-Middle"],
+                correct: 1
+            }
+        ];
+
+        let currentQuiz = 0;
+
+        const questionEl = document.getElementById('question');
+        const optionsContainer = document.getElementById('options');
+        const nextBtn = document.getElementById('next-btn');
+
+        function loadQuiz() {
+            deselectAnswers();
+            const currentQuizData = quizData[currentQuiz];
+            questionEl.innerText = currentQuizData.question;
+            optionsContainer.innerHTML = '';
+
+            currentQuizData.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.className = "w-full text-right p-4 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 hover:border-emerald-500/50 transition duration-200 block";
+                button.onclick = () => selectAnswer(index, button);
+                optionsContainer.appendChild(button);
+            });
         }
 
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                document.getElementById('themeBtn').innerText = "الوضع الليلي 🌙";
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                document.getElementById('themeBtn').innerText = "الوضع النهاري ☀️";
-            }
+        function deselectAnswers() {
+            nextBtn.classList.add('hidden');
         }
 
-        function checkAnswer(lessonId, correctAns, reward) {
-            const userAns = document.getElementById(`ans${lessonId}`).value.trim();
-            if (userAns === correctAns) {
-                balance += reward;
-                localStorage.setItem('cyber_balance', balance);
-                document.getElementById('money').innerText = balance;
-                document.getElementById(`btn${lessonId}`).disabled = true;
-                document.getElementById(`btn${lessonId}`).innerText = "تم الحل بنجاح! +";
-                alert(`أحسنت! الإجابة صحيحة وتم إضافة ${reward}$ إلى رصيدك.`);
+        function selectAnswer(index, button) {
+            const currentQuizData = quizData[currentQuiz];
+            const allButtons = optionsContainer.querySelectorAll('button');
+            
+            allButtons.forEach(btn => btn.disabled = true); // قفل الأزرار بعد الاختيار
+
+            if(index === currentQuizData.correct) {
+                button.classList.add('border-emerald-500', 'bg-emerald-950/30', 'text-emerald-400');
             } else {
-                alert("إجابة خاطئة! انسخ الكود بدقة وجربه مرة أخرى.");
+                button.classList.add('border-red-500', 'bg-red-950/30', 'text-red-400');
+                allButtons[currentQuizData.correct].classList.add('border-emerald-500', 'text-emerald-400');
             }
+            nextBtn.classList.remove('hidden');
         }
+
+        nextBtn.onclick = () => {
+            currentQuiz++;
+            if(currentQuiz < quizData.length) {
+                loadQuiz();
+            } else {
+                document.getElementById('quiz-container').innerHTML = `
+                    <div class="text-center py-8">
+                        <h4 class="text-2xl font-bold text-emerald-400 mb-2">🎉 تهانينا!</h4>
+                        <p class="text-slate-400">لقد أتممت الاختبار الأولي بنجاح.</p>
+                    </div>
+                `;
+            }
+        };
+
+        loadQuiz();
     </script>
 </body>
 </html>
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// تشغيل الملفات الثابتة (مثل واجهة الموقع)
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+
+// رابط API للحصول على بيانات الكورسات (بيانات تجريبية ضخمة)
+app.get('/api/courses', (req, res) => {
+    res.json([
+        { id: 1, title: "Ethical Hacking v12", duration: "50h" },
+        { id: 2, title: "Web Application Pentesting", duration: "24h" },
+        { id: 3, title: "Network Security Fundamentals", duration: "30h" }
+    ]);
+});
+
+// تشغيل السيرفر
+app.listen(PORT, () => {
+    console.log(`🚀 السيرفر يعمل بنجاح على الرابط: http://localhost:${PORT}`);
+});
+{
+  "name": "cyber-academy",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
