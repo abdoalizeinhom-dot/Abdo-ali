@@ -1,202 +1,203 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية الهكر الأخلاقي والأمن السيبراني</title>
-    <!-- استدعاء مكتبة Tailwind CSS للتصميم الاحترافي -->
-    <script src="https://jsdelivr.net"></script>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        body { font-family: 'Tajawal', sans-serif; background-color: #0f172a; color: #f8fafc; }
-    </style>
-</head>
-<body>
+import React, { useState } from 'react';
 
-    <!-- شريط التنقل (Navbar) -->
-    <nav class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-emerald-400">🛡️ CyberAcademy</h1>
-            <div class="space-x-4 space-x-reverse">
-                <a href="#courses" class="hover:text-emerald-400 transition">الدورات</a>
-                <a href="#exams" class="hover:text-emerald-400 transition">الاختبارات</a>
-                <button class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-4 py-2 rounded-lg transition">تسجيل دخول</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- القسم الرئيسي (Hero Section) -->
-    <header class="container mx-auto text-center py-20 px-4">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white">احترف <span class="text-emerald-400">الهكر الأخلاقي</span> من الصفر</h2>
-        <p class="text-slate-400 max-w-2xl mx-auto mb-8 text-lg">منصة تعليمية متكاملة تحتوي على مسارات عملية، مختبرات افتراضية، واختبارات قوية لتأهيلك لسوق العمل.</p>
-        <a href="#courses" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg px-8 py-3 rounded-xl transition shadow-lg shadow-emerald-500/20">ابدأ التعلم الآن</a>
-    </header>
-
-    <!-- قسم الدورات التعليمية (Courses Section) -->
-    <section id="courses" class="container mx-auto py-16 px-4">
-        <h3 class="text-3xl font-bold mb-10 border-r-4 border-emerald-400 pr-4">المسارات التعليمية المتاحة</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <!-- الدورة الأولى -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition">
-                <div class="text-emerald-400 text-4xl mb-4">🌐</div>
-                <h4 class="text-xl font-bold mb-2">اختبار اختراق تطبيقات الويب (Web Pentesting)</h4>
-                <p class="text-slate-400 text-sm mb-4">تعلم ثغرات SQLi, XSS, CSRF وكيفية حماية المواقع منها.</p>
-                <div class="flex justify-between items-center text-xs text-slate-500">
-                    <span>⏱️ 24 ساعة</span>
-                    <span>🔥 للمبتدئين</span>
-                </div>
-            </div>
-
-            <!-- الدورة الثانية -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition">
-                <div class="text-emerald-400 text-4xl mb-4">💻</div>
-                <h4 class="text-xl font-bold mb-2">هندسة عكسية وتحليل البرمجيات الخبيثة</h4>
-                <p class="text-slate-400 text-sm mb-4">تفكيك الفيروسات وفهم كيفية عمل البرامج الضارة وأنظمة التشفير.</p>
-                <div class="flex justify-between items-center text-xs text-slate-500">
-                    <span>⏱️ 40 ساعة</span>
-                    <span>🚨 مستوى متقدم</span>
-                </div>
-            </div>
-
-            <!-- الدورة الثالثة -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/50 transition">
-                <div class="text-emerald-400 text-4xl mb-4">🛡️</div>
-                <h4 class="text-xl font-bold mb-2">شهادة CEH v12 العملية</h4>
-                <p class="text-slate-400 text-sm mb-4">إعداد كامل لاجتياز شهادة الهكر الأخلاقي المعتمدة عالمياً.</p>
-                <div class="flex justify-between items-center text-xs text-slate-500">
-                    <span>⏱️ 50 ساعة</span>
-                    <span>🎓 متوسط</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- قسم الاختبارات التفاعلية (Exams/Quiz Section) -->
-    <section id="exams" class="bg-slate-900/50 border-t border-b border-slate-800 py-16 px-4">
-        <div class="container mx-auto max-w-3xl">
-            <h3 class="text-3xl font-bold mb-4 text-center">قم باختبار مهاراتك السيبرانية</h3>
-            <p class="text-slate-400 text-center mb-8">أجب على الأسئلة التالية لمعرفة مستوى جهوزيتك:</p>
-            
-            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-8" id="quiz-container">
-                <div id="question" class="text-xl font-bold mb-6 text-emerald-300">جاري تحميل السؤال الأول...</div>
-                <div id="options" class="space-y-4">
-                    <!-- الخيارات تظهر هنا برمجياً -->
-                </div>
-                <button id="next-btn" class="mt-6 bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 font-bold px-6 py-2 rounded-lg transition hidden">السؤال التالي ←</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- تذييل الصفحة -->
-    <footer class="text-center py-8 text-slate-600 text-sm border-t border-slate-900">
-        جميع الحقوق محفوظة © أكاديمية الأمن السيبراني 2026
-    </footer>
-
-    <!-- سكربت التحكم في الاختبار التفاعلي -->
-    <script>
-        const quizData = [
-            {
-                question: "ما هو البروتوكول المسؤول عن تشفير اتصالات الويب وصناعة قفل الأمان؟",
-                options: ["HTTP", "FTP", "HTTPS", "SSH"],
-                correct: 2
-            },
-            {
-                question: "ما نوع الهجوم الذي يتم فيه إغراق الخادم بطلبات وهمية لإيقافه عن العمل؟",
-                options: ["Phishing", "DDoS Attack", "SQL Injection", "Man-in-the-Middle"],
-                correct: 1
-            }
-        ];
-
-        let currentQuiz = 0;
-
-        const questionEl = document.getElementById('question');
-        const optionsContainer = document.getElementById('options');
-        const nextBtn = document.getElementById('next-btn');
-
-        function loadQuiz() {
-            deselectAnswers();
-            const currentQuizData = quizData[currentQuiz];
-            questionEl.innerText = currentQuizData.question;
-            optionsContainer.innerHTML = '';
-
-            currentQuizData.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.innerText = option;
-                button.className = "w-full text-right p-4 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 hover:border-emerald-500/50 transition duration-200 block";
-                button.onclick = () => selectAnswer(index, button);
-                optionsContainer.appendChild(button);
-            });
-        }
-
-        function deselectAnswers() {
-            nextBtn.classList.add('hidden');
-        }
-
-        function selectAnswer(index, button) {
-            const currentQuizData = quizData[currentQuiz];
-            const allButtons = optionsContainer.querySelectorAll('button');
-            
-            allButtons.forEach(btn => btn.disabled = true); // قفل الأزرار بعد الاختيار
-
-            if(index === currentQuizData.correct) {
-                button.classList.add('border-emerald-500', 'bg-emerald-950/30', 'text-emerald-400');
-            } else {
-                button.classList.add('border-red-500', 'bg-red-950/30', 'text-red-400');
-                allButtons[currentQuizData.correct].classList.add('border-emerald-500', 'text-emerald-400');
-            }
-            nextBtn.classList.remove('hidden');
-        }
-
-        nextBtn.onclick = () => {
-            currentQuiz++;
-            if(currentQuiz < quizData.length) {
-                loadQuiz();
-            } else {
-                document.getElementById('quiz-container').innerHTML = `
-                    <div class="text-center py-8">
-                        <h4 class="text-2xl font-bold text-emerald-400 mb-2">🎉 تهانينا!</h4>
-                        <p class="text-slate-400">لقد أتممت الاختبار الأولي بنجاح.</p>
-                    </div>
-                `;
-            }
-        };
-
-        loadQuiz();
-    </script>
-</body>
-</html>
-const express = require('express');
-const path = require('path');
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// تشغيل الملفات الثابتة (مثل واجهة الموقع)
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
-
-// رابط API للحصول على بيانات الكورسات (بيانات تجريبية ضخمة)
-app.get('/api/courses', (req, res) => {
-    res.json([
-        { id: 1, title: "Ethical Hacking v12", duration: "50h" },
-        { id: 2, title: "Web Application Pentesting", duration: "24h" },
-        { id: 3, title: "Network Security Fundamentals", duration: "30h" }
-    ]);
-});
-
-// تشغيل السيرفر
-app.listen(PORT, () => {
-    console.log(`🚀 السيرفر يعمل بنجاح على الرابط: http://localhost:${PORT}`);
-});
-{
-  "name": "cyber-academy",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
+// قاعدة بيانات أسئلة الأمن السيبراني
+const CYBER_QUESTIONS = [
+  {
+    id: 1,
+    question: "ما هو الهجوم الذي يقوم فيه المهاجم باعتراض وتعديل البيانات المرسلة بين طرفين دون علمهما؟",
+    options: ["هجوم حجب الخدمة (DDoS)", "رجل في المنتصف (MitM)", "التصيد الاحتيالي (Phishing)", "حقن SQL"],
+    correctAnswer: 1
   },
-  "dependencies": {
-    "express": "^4.19.2"
+  {
+    id: 2,
+    question: "أي من الخيارات التالية يُعد أفضل ممارسة لإنشاء كلمة مرور قوية؟",
+    options: ["استخدام اسمك وتاريخ ميلادك", "كلمة مرور قصيرة يسهل حفظها", "مزيج من الحروف الكبيرة والصغيرة والأرقام والرموز", "إعادة استخدام نفس الكلمة لجميع الحسابات"],
+    correctAnswer: 2
+  },
+  {
+    id: 3,
+    question: "ما هو المصطلح البرمجي الذي يشير إلى برمجيات خبيثة تشفر ملفات المستخدم وتطالب بمقابل مالي لفكها؟",
+    options: ["برمجيات الفدية (Ransomware)", "حصان طروادة (Trojan)", "الدودة (Worm)", "برامج التجسس (Spyware)"],
+    correctAnswer: 0
+  },
+  {
+    id: 4,
+    question: "ما هي التقنية التي تضيف طبقة أمان إضافية وتتطلب وسيلتين للتحقق من هوية المستخدم قبل تسجيل الدخول؟",
+    options: ["التشفير المتماثل", "التحقق الثنائي (MFA)", "جدار الحماية (Firewall)", "بروتوكول HTTPS"],
+    correctAnswer: 1
   }
-}
+];
+
+// بيانات وهمية لقائمة الأوائل
+const LEADERBOARD_DATA = [
+  { name: "أحمد المصرى", score: 100, time: "1:45" },
+  { name: "سارة المهندس", score: 100, time: "2:10" },
+  { name: "عبد الله السيبراني", score: 75, time: "1:30" },
+];
+
+export default function CyberExamPlatform() {
+  // حالات النظام (States)
+  const [step, setStep] = useState('login'); // login, exam, result, leaderboard
+  const [studentInfo, setStudentInfo] = useState({ name: '', phone: '', track: 'أساسيات الأمن السيبراني' });
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [finalScore, setFinalScore] = useState(0);
+
+  // معالجة تسجيل الدخول البدئي
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (studentInfo.name.trim() && studentInfo.phone.trim()) {
+      setStep('exam');
+    } else {
+      alert("الرجاء إدخال بياناتك كاملة للدخول!");
+    }
+  };
+
+  // معالجة اختيار الإجابة
+  const handleSelectAnswer = (optionIndex) => {
+    setSelectedAnswers({
+      ...selectedAnswers,
+      [currentQuestionIndex]: optionIndex
+    });
+  };
+
+  // إنهاء الامتحان وحساب الدرجة
+  const handleFinishExam = () => {
+    let score = 0;
+    CYBER_QUESTIONS.forEach((q, index) => {
+      if (selectedAnswers[index] === q.correctAnswer) {
+        score += 1;
+      }
+    });
+    const percentage = Math.round((score / CYBER_QUESTIONS.length) * 100);
+    setFinalScore(percentage);
+    setStep('result');
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col items-center justify-center p-4 selection:bg-cyan-500 selection:text-slate-950" dir="rtl">
+      {/* الخلفية المضيئة المودرن */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      {/* الحاوية الرئيسية للمنصة */}
+      <div className="w-full max-w-lg bg-slate-900/80 border border-slate-800 rounded-2xl shadow-2xl backdrop-blur-xl p-6 relative overflow-hidden">
+        
+        {/* هيدر المنصة الثابت */}
+        <div className="text-center mb-6">
+          <div className="inline-flex p-3 bg-cyan-950 border border-cyan-800 text-cyan-400 rounded-2xl mb-3 shadow-inner">
+            <svg xmlns="http://w3.org" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">منصة درع الأمن السيبراني</h1>
+          <p className="text-xs text-slate-400 mt-1">طوّر مهاراتك واختبر جاهزيتك الأمنية الرقمية</p>
+        </div>
+
+        {/* 1️⃣ واجهة الدخول والتسجيل */}
+        {step === 'login' && (
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-1">المسار الدراسي</label>
+              <select 
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-cyan-500 transition"
+                value={studentInfo.track}
+                onChange={(e) => setStudentInfo({...studentInfo, track: e.target.value})}
+              >
+                <option>أساسيات الأمن السيبراني 🛡️</option>
+                <option>اختبار الاختراق الأخلاقي 💻</option>
+                <option>التحقيق الجنائي الرقمي 🔍</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-1">الاسم الرباعي للمشترك</label>
+              <input 
+                type="text" 
+                required
+                placeholder="أدخل اسمك الكامل هنا..." 
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 transition"
+                value={studentInfo.name}
+                onChange={(e) => setStudentInfo({...studentInfo, name: e.target.value})}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-300 mb-1">رقم الهاتف</label>
+              <input 
+                type="tel" 
+                required
+                placeholder="01xxxxxxxxx" 
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 text-left placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 transition"
+                value={studentInfo.phone}
+                onChange={(e) => setStudentInfo({...studentInfo, phone: e.target.value})}
+              />
+            </div>
+
+            <button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 active:scale-[0.99] transition">
+              بدء الاختبار التنافسي 🚀
+            </button>
+
+            <div className="relative flex py-2 items-center">
+              <div className="flex-grow border-t border-slate-800"></div>
+              <span className="flex-shrink mx-4 text-slate-600 text-xs">أو تصفح المنصة</span>
+              <div className="flex-grow border-t border-slate-800"></div>
+            </div>
+
+            <button type="button" onClick={() => setStep('leaderboard')} className="w-full bg-slate-950 hover:bg-slate-850 border border-slate-800 hover:border-yellow-600/50 text-yellow-500 font-medium py-3 rounded-xl transition flex items-center justify-center gap-2">
+              🏆 عرض لوحة المتصدرين والأوائل
+            </button>
+          </form>
+        )}
+
+        {/* 2️⃣ واجهة إجراء الامتحان التفاعلي */}
+        {step === 'exam' && (
+          <div className="space-y-5">
+            <div className="flex justify-between items-center text-sm text-slate-400 border-b border-slate-800 pb-3">
+              <span>الممتحن: <strong className="text-slate-200">{studentInfo.name}</strong></span>
+              <span className="bg-slate-950 px-2.5 py-1 rounded-md border border-slate-800 text-cyan-400 font-mono">سؤال {currentQuestionIndex + 1} من {CYBER_QUESTIONS.length}</span>
+            </div>
+
+            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[80px] flex items-center">
+              <p className="text-lg font-medium text-slate-200 leading-relaxed">{CYBER_QUESTIONS[currentQuestionIndex].question}</p>
+            </div>
+
+            <div className="space-y-2.5">
+              {CYBER_QUESTIONS[currentQuestionIndex].options.map((option, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleSelectAnswer(idx)}
+                  className={`w-full text-right p-4 rounded-xl border transition-all flex items-center justify-between ${
+                    selectedAnswers[currentQuestionIndex] === idx
+                      ? 'bg-cyan-950/40 border-cyan-500 text-cyan-300 font-medium shadow-md shadow-cyan-500/5'
+                      : 'bg-slate-950 border-slate-800 hover:border-slate-700 text-slate-300'
+                  }`}
+                >
+                  <span>{option}</span>
+                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${
+                    selectedAnswers[currentQuestionIndex] === idx ? 'border-cyan-400 bg-cyan-400' : 'border-slate-700'
+                  }`}>
+                    {selectedAnswers[currentQuestionIndex] === idx && <div className="w-2 h-2 bg-slate-950 rounded-full"></div>}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div className="flex gap-3 pt-3 border-t border-slate-800">
+              <button
+                disabled={currentQuestionIndex === 0}
+                onClick={() => setCurrentQuestionIndex(prev => prev - 1)}
+                className="flex-1 bg-slate-950 hover:bg-slate-800 border border-slate-800 disabled:opacity-40 text-slate-300 py-3 rounded-xl transition"
+              >
+                السابق
+              </button>
+
+              {currentQuestionIndex < CYBER_QUESTIONS.length - 1 ? (
+                <button
+                  onClick={() => setCurrentQuestionIndex(prev => prev 1)}
+                  className="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 py-3 rounded-xl transition"
+                >
+                  التالي
+                </button>
+              ) : (
+                <button
